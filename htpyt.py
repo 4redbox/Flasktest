@@ -1,21 +1,16 @@
-from flask import Flask, redirect, url_for, request
-app = Flask(__name__)
- 
- 
-@app.route('/success/<name>')
-def success(name):
-    return 'welcome %s' % name
- 
- 
-@app.route('/login', methods=['POST', 'GET'])
-def login():
-    if request.method == 'POST':
-        user = request.form['nm']
-        return redirect(url_for('success', name=user))
-    else:
-        user = request.args.get('nm')
-        return redirect(url_for('success', name=user))
- 
- 
-if __name__ == '__main__':
-    app.run(debug=True)
+#python code for odd and even split
+
+def split(mix):
+	evenli = []
+	oddli  = []
+	
+	for i in mix:
+		if (i % 2 == 0):
+			evenli.append(i)
+		else:
+			oddli.append(i)
+	print("Even Lists:", evenli)	
+	print("Odd Lists: ", oddli)
+
+mix = [1,2,3,4,5,8,3]
+split(mix)

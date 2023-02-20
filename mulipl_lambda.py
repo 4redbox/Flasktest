@@ -1,15 +1,16 @@
 import json
 
 def lambda_handler(event, context):
-    # Extract input data from the event
-    input_data = json.loads(event['body'])
-
-    # Process the input data
-    output_data = {'result': input_data['value'] * 2}
-
-    # Return the output data as JSON
-    return {
+    # Parse the JSON input
+    input_json = json.loads(event['body'])
+    input_value = input_json['input']
+    
+    # Process the input
+    output_value = input_value * 2
+    
+    # Return the output as a JSON response
+    response = {
         'statusCode': 200,
-        'headers': {'Content-Type': 'application/json'},
-        'body': json.dumps(output_data)
+        'body': json.dumps({'output': output_value})
     }
+    return response
